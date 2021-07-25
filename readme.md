@@ -19,3 +19,7 @@ npm install discord-twitch@latest
 > - 💪 **Up to Date**
 > - 🤙 **Infinite Channels, with infite amount of options**
 > - 🤖 **Flexible**
+
+## 📃 **Documentation**
+
+[Click here](https://tovade.github.io/discord-twitch)
