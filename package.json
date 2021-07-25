@@ -1,0 +1,28 @@
+{
+  "name": "discord-twitch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@joshdb/core": "^1.2.5",
+    "@joshdb/sqlite": "^1.1.9",
+    "axios": "^0.21.1",
+    "colors": "^1.4.0",
+    "cron": "^1.8.2",
+    "discord.js": "^12.5.3",
+    "express": "^4.17.1",
+    "minami": "^1.2.3",
+    "request": "^2.88.2",
+    "rss-parser": "^3.12.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.4",
+    "jsdoc-skyceil": "Androz2091/jsdoc-skyceil"
+  }
+}
