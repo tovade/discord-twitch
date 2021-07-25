@@ -58,6 +58,7 @@ class TwitchPoster {
    *
    * @param {options} options
    * @private
+   * @ignore
    */
 
   checkOptions(options) {
@@ -159,6 +160,7 @@ class TwitchPoster {
   /**
    *
    * @private
+   * @ignore
    */
   createProvider() {
     if (this.options) {
