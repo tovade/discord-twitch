@@ -576,3 +576,4 @@ class TwitchPoster {
     });
   }
 }
+module.exports = TwitchPoster;
