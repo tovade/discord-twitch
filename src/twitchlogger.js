@@ -14,7 +14,7 @@ module.exports = (YTP) => {
     throw new Error("TwitchPoster.options.loop_delays_in_min is not a Number");
   setInterval(() => {
     check();
-  },  YTP.options.loop_delays_in_min * 100000);
+  }, YTP.options.loop_delays_in_min * 100000);
   /** Check all Database entries for latest Upload + Send it
    * @param
    */
@@ -151,6 +151,8 @@ module.exports = (YTP) => {
                     });
                   }
                 });
+              } else {
+                return;
               }
             }
           });

@@ -103,6 +103,12 @@ class TwitchPoster {
             }`.dim.green
         );
       }
+      if (options.client_id) {
+        this.options.client_id = options.client_id;
+      }
+      if (options.client_secret) {
+        this.options.client_secret = options.client_secret;
+      }
       if (options.defaults) {
         if (options.defaults.Notification) {
           this.defaults.Notification = options.defaults.Notification;
@@ -146,12 +152,7 @@ class TwitchPoster {
             `Using custom ${`options.providerOptions`.bold}`.dim.green
         );
       }
-      if (options.client_id) {
-        this.options.client_id = options.client_id;
-      }
-      if (options.client_secret) {
-        this.options.client_secret = options.client_secret;
-      }
+
       return this;
     } else {
       return this;
@@ -274,12 +275,13 @@ class TwitchPoster {
   async setChannel(
     username,
     DiscordChannel,
-    Notification = this.options.defaults.Notification,
+    Notification,
     preventDuplicates = true
   ) {
     return new Promise(async (res, rej) => {
       try {
         if (!username) rej("No twitch username was provided");
+        if (!Notification) Notification = this.options.defaults.Notification;
         if (typeof username !== "string")
           return rej("The username must be a string");
         if (!DiscordChannel || !DiscordChannel.guild || !DiscordChannel.id)

@@ -22,4 +22,4 @@ npm install discord-twitch@latest
 
 ## 📃 **Documentation**
 
-[Click here](https://tovade.github.io/discord-twitch)
+[Click here](https://discord-twitch.js.org)
