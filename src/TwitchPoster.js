@@ -281,7 +281,7 @@ class TwitchPoster {
     return new Promise(async (res, rej) => {
       try {
         if (!username) rej("No twitch username was provided");
-        if (!Notification) Notification = this.options.defaults.Notification;
+        if (!Notification) Notification = this.defaults.Notification;
         if (typeof username !== "string")
           return rej("The username must be a string");
         if (!DiscordChannel || !DiscordChannel.guild || !DiscordChannel.id)
