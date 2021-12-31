@@ -409,7 +409,7 @@ class TwitchPoster {
         await this.YTP_DB.ensure(DiscordGuildID, {
           channels: [],
         });
-        await Util.delay(200);
+        await delay(200);
         let channels = await this.YTP_DB.get(`${DiscordGuildID}.channels`);
         let CHdata = channels.find((v) => v.username === username);
         if (!CHdata) {
@@ -446,7 +446,7 @@ class TwitchPoster {
         await this.YTP_DB.ensure(DiscordChannel.guild.id, {
           channels: [],
         });
-        await Util.delay(200);
+        await delay(200);
         let channels = await this.YTP_DB.get(
           `${DiscordChannel.guild.id}.channels`
         );
@@ -502,7 +502,7 @@ class TwitchPoster {
         await this.YTP_DB.ensure(DiscordGuildID, {
           channels: [],
         });
-        await Util.delay(200);
+        await delay(200);
         let channels = await this.YTP_DB.get(`${DiscordGuildID}.channels`);
         let CHdata = channels.find((v) => v.username === username);
         let index = channels.findIndex((v) => v.username === username);
@@ -541,7 +541,7 @@ class TwitchPoster {
         await this.YTP_DB.ensure(DiscordGuildID, {
           channels: [],
         });
-        await Util.delay(200);
+        await delay(200);
         let channels = await this.YTP_DB.get(`${DiscordGuildID}.channels`);
         return res(channels);
       } catch (error) {
@@ -579,3 +579,12 @@ class TwitchPoster {
   }
 }
 module.exports = TwitchPoster;
+function delay(delayInms) {
+  try {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(2);
+      }, delayInms);
+    });
+  } catch (_) {}
+}
