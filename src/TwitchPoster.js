@@ -266,7 +266,7 @@ class TwitchPoster {
   }
 
   /** Set a new twitch username to a Guild ID
-   * @param {string} ChannelLink Twitch username
+   * @param {string} username Twitch username
    * @param {OBJECT|DiscordChannel} DiscordChannel DiscordChannel with ID && guild parameters
    * @param {string} Notification Notification Message | OPTIONAL | DEFAULT: uses the options
    * @param {Boolean} preventDuplicates Default: True
@@ -355,17 +355,17 @@ class TwitchPoster {
   }
 
   /** Get Channel Information about a LINK
-   * @param {string} ChannelLink twitch username
+   * @param {string} username twitch username
    * @returns {StreamerObject}
    */
-  async getChannelInfo(ChannelLink) {
+  async getChannelInfo(username) {
     return new Promise(async (res, rej) => {
       try {
-        if (!ChannelLink)
+        if (!username)
           return rej("A String is required for the twitch username");
-        if (typeof ChannelLink !== "string")
+        if (typeof username !== "string")
           return rej(
-            `Passed in ${typeof ChannelLink} but a String would be required for the twitch username`
+            `Passed in ${typeof username} but a String would be required for the twitch username`
           );
         await Util.getToken(
           this.options.client_id,
@@ -377,7 +377,7 @@ class TwitchPoster {
           let user = await Util.getUserInfo(
             access_token,
             this.options.client_id,
-            ChannelLink
+            username
           );
           return res(user.data[0]);
         });
@@ -389,10 +389,10 @@ class TwitchPoster {
 
   /** Get twitch username for LINK
    * @param {string} DiscordGuildID Discord Guild id
-   * @param {string} ChannelLink twitch username
+   * @param {string} username twitch username
    * @returns {StreamerObject}
    */
-  async getChannel(DiscordGuildID, ChannelLink) {
+  async getChannel(DiscordGuildID, username) {
     return new Promise(async (res, rej) => {
       try {
         if (!DiscordGuildID)
@@ -401,18 +401,17 @@ class TwitchPoster {
           return rej(
             `Passed in ${typeof DiscordGuildID} but a String would be required for the DiscordGuildID`
           );
-        if (!ChannelLink)
-          return rej("A String is required for the ChannelLink");
-        if (typeof ChannelLink !== "string")
+        if (!username) return rej("A String is required for the username");
+        if (typeof username !== "string")
           return rej(
-            `Passed in ${typeof ChannelLink} but a String would be required for the twitch username`
+            `Passed in ${typeof username} but a String would be required for the twitch username`
           );
         await this.YTP_DB.ensure(DiscordGuildID, {
           channels: [],
         });
         await Util.delay(200);
         let channels = await this.YTP_DB.get(`${DiscordGuildID}.channels`);
-        let CHdata = channels.find((v) => v.username === ChannelLink);
+        let CHdata = channels.find((v) => v.username === username);
         if (!CHdata) {
           CHdata = "No channels";
           return rej(CHdata);
@@ -425,23 +424,22 @@ class TwitchPoster {
   }
 
   /** Edit a specific twitch username in a Guild ID
-   * @param {string} ChannelLink twitch streamer
+   * @param {string} username twitch streamer
    * @param {OBJECT|DiscordChannel} DiscordChannel DiscordChannel with ID && guild parameters
    * @param {string} Notification Notification Message | OPTIONAL | DEFAULT: uses the options
    * @returns {StreamerObject}
    */
   async editChannel(
-    ChannelLink,
+    username,
     DiscordChannel,
     Notification = this.options.defaults.Notification
   ) {
     return new Promise(async (res, rej) => {
       try {
-        if (!ChannelLink)
-          return rej("A String is required for the ChannelLink");
-        if (typeof ChannelLink !== "string")
+        if (!username) return rej("A String is required for the username");
+        if (typeof username !== "string")
           return rej(
-            `Passed in ${typeof ChannelLink} but a String would be required for the twitch username`
+            `Passed in ${typeof username} but a String would be required for the twitch username`
           );
         if (!DiscordChannel || !DiscordChannel.guild || !DiscordChannel.id)
           return rej("A DiscordChannel with Guild Information is required!");
@@ -452,14 +450,14 @@ class TwitchPoster {
         let channels = await this.YTP_DB.get(
           `${DiscordChannel.guild.id}.channels`
         );
-        let CHdata = channels.find((v) => v.username === ChannelLink);
-        let index = channels.findIndex((v) => v.username === ChannelLink);
+        let CHdata = channels.find((v) => v.username === username);
+        let index = channels.findIndex((v) => v.username === username);
         if (!CHdata) {
           rej("Channel not setup yet");
           return;
         }
         let newCHdata = {
-          username: ChannelLink,
+          username: username,
           guild: DiscordChannel.guild.id,
           status: `offline`,
           message: Notification,
@@ -483,17 +481,17 @@ class TwitchPoster {
 
   /** Delete a specific twitch username in a Guild
    * @param {string} DiscordGuildID Discord Guild id
-   * @param {string} ChannelLink
+   * @param {string} username
    * @returns {StreamerObject}
    */
-  async deleteChannel(DiscordGuildID, ChannelLink) {
+  async deleteChannel(DiscordGuildID, username) {
     return new Promise(async (res, rej) => {
       try {
-        if (!ChannelLink)
+        if (!username)
           return rej("A String is required for the Twitch Username");
-        if (typeof ChannelLink !== "string")
+        if (typeof username !== "string")
           return rej(
-            `Passed in ${typeof ChannelLink} but a String would be required for the Twitch Username`
+            `Passed in ${typeof username} but a String would be required for the Twitch Username`
           );
         if (!DiscordGuildID)
           return rej("A String is required for the DiscordGuildID");
@@ -506,8 +504,8 @@ class TwitchPoster {
         });
         await Util.delay(200);
         let channels = await this.YTP_DB.get(`${DiscordGuildID}.channels`);
-        let CHdata = channels.find((v) => v.username === ChannelLink);
-        let index = channels.findIndex((v) => v.username === ChannelLink);
+        let CHdata = channels.find((v) => v.username === username);
+        let index = channels.findIndex((v) => v.username === username);
         if (!CHdata) {
           rej("Channel not setup yet");
           return;
