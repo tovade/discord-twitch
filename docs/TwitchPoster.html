@@ -377,7 +377,7 @@
 
     
 
-    <h4 class="name" id="deleteChannel"><span class="type-signature">(async) </span>deleteChannel<span class="signature">(DiscordGuildID, ChannelLink)</span><span class="type-signature"> &rarr; {<a href="global.html#StreamerObject">StreamerObject</a>}</span></h4>
+    <h4 class="name" id="deleteChannel"><span class="type-signature">(async) </span>deleteChannel<span class="signature">(DiscordGuildID, username)</span><span class="type-signature"> &rarr; {<a href="global.html#StreamerObject">StreamerObject</a>}</span></h4>
 
     
 
@@ -485,7 +485,7 @@
 
         <tr>
             
-                <td class="name"><code>ChannelLink</code></td>
+                <td class="name"><code>username</code></td>
             
 
             <td class="type">
@@ -554,7 +554,7 @@
 
     
 
-    <h4 class="name" id="editChannel"><span class="type-signature">(async) </span>editChannel<span class="signature">(ChannelLink, DiscordChannel, Notification)</span><span class="type-signature"> &rarr; {<a href="global.html#StreamerObject">StreamerObject</a>}</span></h4>
+    <h4 class="name" id="editChannel"><span class="type-signature">(async) </span>editChannel<span class="signature">(username, DiscordChannel, Notification)</span><span class="type-signature"> &rarr; {<a href="global.html#StreamerObject">StreamerObject</a>}</span></h4>
 
     
 
@@ -636,7 +636,7 @@
 
         <tr>
             
-                <td class="name"><code>ChannelLink</code></td>
+                <td class="name"><code>username</code></td>
             
 
             <td class="type">
@@ -911,7 +911,7 @@
 
     
 
-    <h4 class="name" id="getChannel"><span class="type-signature">(async) </span>getChannel<span class="signature">(DiscordGuildID, ChannelLink)</span><span class="type-signature"> &rarr; {<a href="global.html#StreamerObject">StreamerObject</a>}</span></h4>
+    <h4 class="name" id="getChannel"><span class="type-signature">(async) </span>getChannel<span class="signature">(DiscordGuildID, username)</span><span class="type-signature"> &rarr; {<a href="global.html#StreamerObject">StreamerObject</a>}</span></h4>
 
     
 
@@ -1019,7 +1019,7 @@
 
         <tr>
             
-                <td class="name"><code>ChannelLink</code></td>
+                <td class="name"><code>username</code></td>
             
 
             <td class="type">
@@ -1088,7 +1088,7 @@
 
     
 
-    <h4 class="name" id="getChannelInfo"><span class="type-signature">(async) </span>getChannelInfo<span class="signature">(ChannelLink)</span><span class="type-signature"> &rarr; {<a href="global.html#StreamerObject">StreamerObject</a>}</span></h4>
+    <h4 class="name" id="getChannelInfo"><span class="type-signature">(async) </span>getChannelInfo<span class="signature">(username)</span><span class="type-signature"> &rarr; {<a href="global.html#StreamerObject">StreamerObject</a>}</span></h4>
 
     
 
@@ -1170,7 +1170,7 @@
 
         <tr>
             
-                <td class="name"><code>ChannelLink</code></td>
+                <td class="name"><code>username</code></td>
             
 
             <td class="type">
@@ -1239,7 +1239,7 @@
 
     
 
-    <h4 class="name" id="setChannel"><span class="type-signature">(async) </span>setChannel<span class="signature">(ChannelLink, DiscordChannel, Notification, preventDuplicates)</span><span class="type-signature"> &rarr; {<a href="global.html#StreamerObject">StreamerObject</a>}</span></h4>
+    <h4 class="name" id="setChannel"><span class="type-signature">(async) </span>setChannel<span class="signature">(username, DiscordChannel, Notification, preventDuplicates)</span><span class="type-signature"> &rarr; {<a href="global.html#StreamerObject">StreamerObject</a>}</span></h4>
 
     
 
@@ -1311,6 +1311,8 @@
         
 
         
+        <th>Default</th>
+        
 
         <th class="last">Description</th>
     </tr>
@@ -1321,7 +1323,7 @@
 
         <tr>
             
-                <td class="name"><code>ChannelLink</code></td>
+                <td class="name"><code>username</code></td>
             
 
             <td class="type">
@@ -1335,6 +1337,10 @@
 
             
 
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last">
@@ -1365,6 +1371,10 @@
             
 
             
+                <td class="default">
+                
+                </td>
+            
 
             <td class="description last">
                 <p>DiscordChannel with ID &amp;&amp; guild parameters</p>
@@ -1391,6 +1401,10 @@
             
 
             
+                <td class="default">
+                
+                </td>
+            
 
             <td class="description last">
                 <p>Notification Message | OPTIONAL | DEFAULT: uses the options</p>
@@ -1416,6 +1430,12 @@
 
             
 
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
             
 
             <td class="description last">
